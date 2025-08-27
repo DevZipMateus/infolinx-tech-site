@@ -1,5 +1,4 @@
 
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
@@ -179,8 +178,10 @@ const Gallery = () => {
                   src={images[selectedImageIndex].src}
                   alt={images[selectedImageIndex].alt}
                   className={`max-w-full object-contain ${
-                    selectedImageIndex === 12 || selectedImageIndex === 13 
-                      ? 'max-h-[calc(60vh-100px)]' 
+                    selectedImageIndex === 12 
+                      ? 'max-h-[calc(50vh-100px)]' 
+                      : selectedImageIndex === 11
+                      ? 'max-h-[calc(60vh-100px)]'
                       : 'max-h-[calc(100%-100px)]'
                   }`}
                 />
@@ -236,4 +237,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
