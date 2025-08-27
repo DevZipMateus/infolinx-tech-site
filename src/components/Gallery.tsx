@@ -1,4 +1,5 @@
 
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
@@ -152,7 +153,7 @@ const Gallery = () => {
         {/* Modal for expanded image */}
         <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
           <DialogContent 
-            className="max-w-5xl w-full h-[90vh] p-0 bg-black/95 border-none"
+            className="max-w-7xl w-full h-[95vh] p-0 bg-black/95 border-none"
             onKeyDown={handleKeyDown}
           >
             <div className="relative w-full h-full flex items-center justify-center">
@@ -173,11 +174,11 @@ const Gallery = () => {
               </button>
 
               {/* Image */}
-              <div className="flex flex-col items-center justify-center w-full h-full p-8">
+              <div className="flex flex-col items-center justify-center w-full h-full p-4 md:p-8">
                 <img
                   src={images[selectedImageIndex].src}
                   alt={images[selectedImageIndex].alt}
-                  className="max-w-full max-h-[calc(100%-80px)] object-contain"
+                  className="max-w-full max-h-[calc(100%-100px)] object-contain"
                 />
                 <h3 className="text-white text-xl font-semibold mt-4 text-center">
                   {images[selectedImageIndex].title}
@@ -231,3 +232,4 @@ const Gallery = () => {
 };
 
 export default Gallery;
+
