@@ -53,16 +53,17 @@ const ScrollStory = () => {
       const sectionBottom = rect.bottom;
 
       if (sectionTop <= windowHeight && sectionBottom >= 0) {
-        // Melhor cálculo do progresso para distribuir as imagens uniformemente
-        const totalScrollDistance = sectionHeight + windowHeight;
-        const currentScroll = windowHeight - sectionTop;
+        // Cálculo otimizado para seção menor
+        const totalScrollDistance = sectionHeight;
+        const currentScroll = Math.max(0, windowHeight - sectionTop);
         const progress = Math.max(0, Math.min(1, currentScroll / totalScrollDistance));
         
         setScrollProgress(progress);
         
-        // Distribui as imagens de forma mais equilibrada ao longo do scroll
+        // Distribui as imagens ao longo de 80% do scroll, deixando 20% para a transição final
         const totalImages = storyData.length;
-        const imageProgress = progress * (totalImages - 1);
+        const effectiveProgress = Math.min(progress / 0.8, 1); // Usa apenas 80% do scroll
+        const imageProgress = effectiveProgress * (totalImages - 1);
         const imageIndex = Math.floor(imageProgress);
         const clampedIndex = Math.min(imageIndex, totalImages - 1);
         
@@ -83,17 +84,17 @@ const ScrollStory = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative h-[300vh] overflow-hidden"
+      className="relative h-[150vh] overflow-hidden"
       id="scroll-story"
     >
       {/* Container fixo que permanece no centro da tela */}
       <div className="sticky top-0 h-screen flex items-center justify-center">
         {/* Background com imagem */}
-        <div className="absolute inset-0 transition-all duration-1000 ease-out">
+        <div className="absolute inset-0 transition-all duration-700 ease-out">
           {storyData.map((story, index) => (
             <div
               key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
+              className={`absolute inset-0 transition-opacity duration-700 ${
                 index === currentImageIndex ? 'opacity-100' : 'opacity-0'
               }`}
               style={{
@@ -126,27 +127,27 @@ const ScrollStory = () => {
             </p>
           </div>
 
-          {/* Indicador de progresso melhorado */}
+          {/* Indicador de progresso compacto */}
           <div className="mt-12">
             <div className="flex justify-center space-x-2">
               {storyData.map((_, index) => (
                 <div
                   key={index}
-                  className={`w-12 h-1 rounded-full transition-all duration-500 ${
+                  className={`w-8 h-1 rounded-full transition-all duration-500 ${
                     index === currentImageIndex 
-                      ? 'bg-white' 
+                      ? 'bg-white scale-110' 
                       : 'bg-white/30'
                   }`}
                 />
               ))}
             </div>
-            <div className="mt-6 text-white/60 text-sm">
+            <div className="mt-4 text-white/60 text-sm">
               {currentImageIndex + 1} de {storyData.length}
             </div>
-            {/* Indicador de progresso geral */}
-            <div className="mt-4 w-64 mx-auto bg-white/20 rounded-full h-1">
+            {/* Barra de progresso geral mais visível */}
+            <div className="mt-4 w-48 mx-auto bg-white/20 rounded-full h-1.5">
               <div 
-                className="bg-white h-1 rounded-full transition-all duration-300"
+                className="bg-white h-1.5 rounded-full transition-all duration-300"
                 style={{ width: `${scrollProgress * 100}%` }}
               />
             </div>
@@ -154,13 +155,23 @@ const ScrollStory = () => {
         </div>
 
         {/* Scroll indicator - apenas visível no início */}
-        {scrollProgress < 0.1 && (
+        {scrollProgress < 0.15 && (
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 animate-bounce">
             <div className="flex flex-col items-center">
               <span className="text-sm mb-2">Role para descobrir mais</span>
               <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
                 <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* Indicador de fim da seção */}
+        {scrollProgress > 0.85 && (
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80">
+            <div className="flex flex-col items-center">
+              <span className="text-sm">Continue para saber mais</span>
+              <div className="mt-2 animate-pulse">↓</div>
             </div>
           </div>
         )}
