@@ -1,9 +1,10 @@
 
-import { Check, Monitor, Server, Tablet, Router, Printer, Shield, Camera, Cloud, ShoppingCart } from 'lucide-react';
+import { Check, Monitor, Server, Tablet, Router, Printer, Shield, Camera, Cloud, ShoppingCart, Plus, Minus } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { useCart } from '@/hooks/useCart';
+import { useToast } from '@/hooks/use-toast';
 import CartDrawer from './CartDrawer';
 
 const Plans = () => {
@@ -29,6 +30,9 @@ const Plans = () => {
   ];
 
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
+  const { toast } = useToast();
+  
   const { 
     cartItems, 
     addToCart, 
@@ -38,6 +42,23 @@ const Plans = () => {
     getTotalItems, 
     generateWhatsAppMessage 
   } = useCart();
+
+  const getQuantity = (serviceId: number) => quantities[serviceId] || 1;
+
+  const updateServiceQuantity = (serviceId: number, newQuantity: number) => {
+    if (newQuantity < 1) return;
+    setQuantities(prev => ({ ...prev, [serviceId]: newQuantity }));
+  };
+
+  const handleAddToCart = (service: typeof services[0]) => {
+    const quantity = getQuantity(service.id);
+    addToCart({ id: service.id, name: service.name, price: service.price }, quantity);
+    
+    toast({
+      title: "Item adicionado ao carrinho",
+      description: `${service.name} (${quantity}x) foi adicionado ao carrinho.`,
+    });
+  };
 
   const handleSendWhatsApp = () => {
     const message = generateWhatsAppMessage();
@@ -49,7 +70,7 @@ const Plans = () => {
       <div className="container mx-auto px-4">
         {/* Floating Cart Button */}
         {getTotalItems() > 0 && (
-          <div className="fixed bottom-6 right-6 z-30">
+          <div className="fixed bottom-6 right-20 z-50">
             <Button
               onClick={() => setIsCartOpen(true)}
               className="relative bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-14 h-14 shadow-lg"
@@ -82,6 +103,7 @@ const Plans = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {services.map((service, index) => {
             const IconComponent = service.icon;
+            const currentQuantity = getQuantity(service.id);
             
             return (
               <Card 
@@ -106,9 +128,35 @@ const Plans = () => {
                     <span>Suporte completo incluído</span>
                   </div>
 
+                  {/* Quantity Selector */}
+                  <div className="flex items-center justify-center gap-2 py-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => updateServiceQuantity(service.id, currentQuantity - 1)}
+                      className="h-8 w-8 p-0"
+                      disabled={currentQuantity <= 1}
+                    >
+                      <Minus className="h-3 w-3" />
+                    </Button>
+                    
+                    <span className="min-w-[3rem] text-center font-medium bg-muted px-3 py-1 rounded">
+                      {currentQuantity}
+                    </span>
+                    
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => updateServiceQuantity(service.id, currentQuantity + 1)}
+                      className="h-8 w-8 p-0"
+                    >
+                      <Plus className="h-3 w-3" />
+                    </Button>
+                  </div>
+
                   <div className="space-y-2">
                     <Button
-                      onClick={() => addToCart({ id: service.id, name: service.name, price: service.price })}
+                      onClick={() => handleAddToCart(service)}
                       className="w-full"
                     >
                       <ShoppingCart className="w-4 h-4 mr-2" />

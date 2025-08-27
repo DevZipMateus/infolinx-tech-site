@@ -5,7 +5,7 @@ const WhatsAppButton = () => {
   return (
     <a
       href="https://wa.me/5531982980064?text=Olá! Gostaria de conhecer mais sobre os serviços da Infolinx."
-      className="whatsapp-float group"
+      className="fixed bottom-6 right-6 z-40 bg-green-600 hover:bg-green-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 group"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar no WhatsApp"
