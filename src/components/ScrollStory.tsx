@@ -53,15 +53,18 @@ const ScrollStory = () => {
       const sectionBottom = rect.bottom;
 
       if (sectionTop <= windowHeight && sectionBottom >= 0) {
-        // A seção está visível
-        const visibleHeight = Math.min(windowHeight, sectionBottom) - Math.max(0, sectionTop);
-        const progress = Math.max(0, Math.min(1, (windowHeight - sectionTop) / (sectionHeight + windowHeight)));
+        // Melhor cálculo do progresso para distribuir as imagens uniformemente
+        const totalScrollDistance = sectionHeight + windowHeight;
+        const currentScroll = windowHeight - sectionTop;
+        const progress = Math.max(0, Math.min(1, currentScroll / totalScrollDistance));
         
         setScrollProgress(progress);
         
-        // Determina qual imagem mostrar baseada no progresso
-        const imageIndex = Math.floor(progress * storyData.length);
-        const clampedIndex = Math.min(imageIndex, storyData.length - 1);
+        // Distribui as imagens de forma mais equilibrada ao longo do scroll
+        const totalImages = storyData.length;
+        const imageProgress = progress * (totalImages - 1);
+        const imageIndex = Math.floor(imageProgress);
+        const clampedIndex = Math.min(imageIndex, totalImages - 1);
         
         if (clampedIndex !== currentImageIndex) {
           setCurrentImageIndex(clampedIndex);
@@ -80,7 +83,7 @@ const ScrollStory = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative h-[500vh] overflow-hidden"
+      className="relative h-[300vh] overflow-hidden"
       id="scroll-story"
     >
       {/* Container fixo que permanece no centro da tela */}
@@ -123,7 +126,7 @@ const ScrollStory = () => {
             </p>
           </div>
 
-          {/* Indicador de progresso */}
+          {/* Indicador de progresso melhorado */}
           <div className="mt-12">
             <div className="flex justify-center space-x-2">
               {storyData.map((_, index) => (
@@ -139,6 +142,13 @@ const ScrollStory = () => {
             </div>
             <div className="mt-6 text-white/60 text-sm">
               {currentImageIndex + 1} de {storyData.length}
+            </div>
+            {/* Indicador de progresso geral */}
+            <div className="mt-4 w-64 mx-auto bg-white/20 rounded-full h-1">
+              <div 
+                className="bg-white h-1 rounded-full transition-all duration-300"
+                style={{ width: `${scrollProgress * 100}%` }}
+              />
             </div>
           </div>
         </div>
