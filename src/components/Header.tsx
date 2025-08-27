@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X, Monitor, Headphones, Shield, Smartphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -20,7 +19,6 @@ const Header = () => {
     { href: '#inicio', label: 'Início' },
     { href: '#sobre', label: 'Sobre' },
     { href: '#servicos', label: 'Serviços' },
-    { href: '#planos', label: 'Planos' },
     { href: '#contato', label: 'Contato' },
   ];
 
