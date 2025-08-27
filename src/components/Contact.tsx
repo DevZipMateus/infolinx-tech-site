@@ -95,7 +95,11 @@ const Contact = () => {
           <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 h-full flex flex-col justify-center">
               <div className="text-center space-y-6">
-                <MessageCircle className="w-16 h-16 text-primary mx-auto" />
+                <img 
+                  src="/lovable-uploads/d92d3c24-3b57-4af8-9577-4fa6a5f495d2.png" 
+                  alt="WhatsApp"
+                  className="w-16 h-16 mx-auto"
+                />
                 <h3 className="text-2xl font-bold text-foreground">
                   Vamos Conversar?
                 </h3>
@@ -111,7 +115,11 @@ const Contact = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <MessageCircle className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                    <img 
+                      src="/lovable-uploads/d92d3c24-3b57-4af8-9577-4fa6a5f495d2.png" 
+                      alt="WhatsApp"
+                      className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform"
+                    />
                     Falar no WhatsApp
                   </a>
                   

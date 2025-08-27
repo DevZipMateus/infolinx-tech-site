@@ -203,6 +203,11 @@ const Gallery = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
+              <img 
+                src="/lovable-uploads/d92d3c24-3b57-4af8-9577-4fa6a5f495d2.png" 
+                alt="WhatsApp"
+                className="w-5 h-5 mr-2"
+              />
               Falar Conosco
             </a>
           </div>
