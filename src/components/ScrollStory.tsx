@@ -1,10 +1,13 @@
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 const ScrollStory = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [sectionState, setSectionState] = useState<'before' | 'inside' | 'after'>('before');
+  const [virtualScrollCount, setVirtualScrollCount] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const isScrollHijacked = useRef(false);
+  const wheelTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const storyData = [
     {
@@ -39,52 +42,192 @@ const ScrollStory = () => {
     }
   ];
 
+  const releaseScroll = useCallback(() => {
+    if (isScrollHijacked.current) {
+      document.body.style.overflow = 'auto';
+      isScrollHijacked.current = false;
+      setSectionState('after');
+      
+      // Força o scroll para continuar para baixo
+      const nextSection = sectionRef.current?.nextElementSibling;
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
+
+  const hijackScroll = useCallback(() => {
+    if (!isScrollHijacked.current) {
+      document.body.style.overflow = 'hidden';
+      isScrollHijacked.current = true;
+      setSectionState('inside');
+      setVirtualScrollCount(0);
+      setCurrentImageIndex(0);
+    }
+  }, []);
+
+  const handleWheel = useCallback((e: WheelEvent) => {
+    if (sectionState !== 'inside') return;
+
+    e.preventDefault();
+    
+    // Debounce wheel events
+    if (wheelTimeoutRef.current) {
+      clearTimeout(wheelTimeoutRef.current);
+    }
+
+    wheelTimeoutRef.current = setTimeout(() => {
+      if (e.deltaY > 0) {
+        // Scroll para baixo
+        setVirtualScrollCount(prev => {
+          const newCount = prev + 1;
+          const newImageIndex = Math.min(Math.floor(newCount / 3), storyData.length - 1);
+          
+          if (newImageIndex !== currentImageIndex) {
+            setCurrentImageIndex(newImageIndex);
+          }
+          
+          // Se chegou na última imagem e tentou rolar mais
+          if (newImageIndex >= storyData.length - 1 && newCount > (storyData.length - 1) * 3 + 2) {
+            releaseScroll();
+          }
+          
+          return newCount;
+        });
+      } else if (e.deltaY < 0) {
+        // Scroll para cima
+        setVirtualScrollCount(prev => {
+          const newCount = Math.max(prev - 1, 0);
+          const newImageIndex = Math.min(Math.floor(newCount / 3), storyData.length - 1);
+          
+          if (newImageIndex !== currentImageIndex) {
+            setCurrentImageIndex(newImageIndex);
+          }
+          
+          return newCount;
+        });
+      }
+    }, 50);
+  }, [sectionState, currentImageIndex, storyData.length, releaseScroll]);
+
+  const handleTouchStart = useRef<{ y: number } | null>(null);
+  const handleTouchMove = useCallback((e: TouchEvent) => {
+    if (sectionState !== 'inside') return;
+    
+    if (handleTouchStart.current) {
+      const deltaY = handleTouchStart.current.y - e.touches[0].clientY;
+      
+      if (Math.abs(deltaY) > 30) {
+        e.preventDefault();
+        
+        if (deltaY > 0) {
+          // Swipe up (scroll down)
+          setVirtualScrollCount(prev => {
+            const newCount = prev + 1;
+            const newImageIndex = Math.min(Math.floor(newCount / 3), storyData.length - 1);
+            
+            if (newImageIndex !== currentImageIndex) {
+              setCurrentImageIndex(newImageIndex);
+            }
+            
+            if (newImageIndex >= storyData.length - 1 && newCount > (storyData.length - 1) * 3 + 2) {
+              releaseScroll();
+            }
+            
+            return newCount;
+          });
+        } else {
+          // Swipe down (scroll up)
+          setVirtualScrollCount(prev => {
+            const newCount = Math.max(prev - 1, 0);
+            const newImageIndex = Math.min(Math.floor(newCount / 3), storyData.length - 1);
+            
+            if (newImageIndex !== currentImageIndex) {
+              setCurrentImageIndex(newImageIndex);
+            }
+            
+            return newCount;
+          });
+        }
+        
+        handleTouchStart.current = null;
+      }
+    }
+  }, [sectionState, currentImageIndex, storyData.length, releaseScroll]);
+
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current) return;
+      if (!sectionRef.current || sectionState === 'inside') return;
 
       const section = sectionRef.current;
       const rect = section.getBoundingClientRect();
-      const sectionHeight = section.offsetHeight;
       const windowHeight = window.innerHeight;
 
-      // Calcula o progresso do scroll dentro da seção
-      const sectionTop = rect.top;
-      const sectionBottom = rect.bottom;
-
-      if (sectionTop <= windowHeight && sectionBottom >= 0) {
-        // Cálculo otimizado para seção menor
-        const totalScrollDistance = sectionHeight;
-        const currentScroll = Math.max(0, windowHeight - sectionTop);
-        const progress = Math.max(0, Math.min(1, currentScroll / totalScrollDistance));
-        
-        setScrollProgress(progress);
-        
-        // Distribui as imagens ao longo de 80% do scroll, deixando 20% para a transição final
-        const totalImages = storyData.length;
-        const effectiveProgress = Math.min(progress / 0.8, 1); // Usa apenas 80% do scroll
-        const imageProgress = effectiveProgress * (totalImages - 1);
-        const imageIndex = Math.floor(imageProgress);
-        const clampedIndex = Math.min(imageIndex, totalImages - 1);
-        
-        if (clampedIndex !== currentImageIndex) {
-          setCurrentImageIndex(clampedIndex);
+      // Verifica se a seção está visível
+      if (rect.top <= windowHeight * 0.5 && rect.bottom >= windowHeight * 0.5) {
+        if (sectionState === 'before') {
+          hijackScroll();
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Chama uma vez para definir o estado inicial
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (sectionState !== 'inside') return;
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [currentImageIndex, storyData.length]);
+      if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+        e.preventDefault();
+        setCurrentImageIndex(prev => {
+          const newIndex = Math.min(prev + 1, storyData.length - 1);
+          if (newIndex >= storyData.length - 1 && prev === storyData.length - 1) {
+            releaseScroll();
+          }
+          return newIndex;
+        });
+      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault();
+        setCurrentImageIndex(prev => Math.max(prev - 1, 0));
+      } else if (e.key === 'Escape') {
+        releaseScroll();
+      }
+    };
+
+    // Event listeners
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('keydown', handleKeyDown);
+    
+    // Touch events
+    window.addEventListener('touchstart', (e) => {
+      if (sectionState === 'inside') {
+        handleTouchStart.current = { y: e.touches[0].clientY };
+      }
+    });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('touchmove', handleTouchMove);
+      
+      if (wheelTimeoutRef.current) {
+        clearTimeout(wheelTimeoutRef.current);
+      }
+      
+      // Cleanup - libera o scroll se o componente for desmontado
+      if (isScrollHijacked.current) {
+        document.body.style.overflow = 'auto';
+      }
+    };
+  }, [sectionState, hijackScroll, handleWheel, handleTouchMove, releaseScroll, storyData.length]);
 
   const currentStory = storyData[currentImageIndex];
+  const progress = currentImageIndex / (storyData.length - 1);
 
   return (
     <section 
       ref={sectionRef}
-      className="relative h-[150vh] overflow-hidden"
+      className="relative h-screen overflow-hidden"
       id="scroll-story"
     >
       {/* Container fixo que permanece no centro da tela */}
@@ -127,7 +270,7 @@ const ScrollStory = () => {
             </p>
           </div>
 
-          {/* Indicador de progresso compacto */}
+          {/* Indicador de progresso e navegação */}
           <div className="mt-12">
             <div className="flex justify-center space-x-2">
               {storyData.map((_, index) => (
@@ -144,36 +287,45 @@ const ScrollStory = () => {
             <div className="mt-4 text-white/60 text-sm">
               {currentImageIndex + 1} de {storyData.length}
             </div>
-            {/* Barra de progresso geral mais visível */}
+            {/* Barra de progresso geral */}
             <div className="mt-4 w-48 mx-auto bg-white/20 rounded-full h-1.5">
               <div 
                 className="bg-white h-1.5 rounded-full transition-all duration-300"
-                style={{ width: `${scrollProgress * 100}%` }}
+                style={{ width: `${progress * 100}%` }}
               />
             </div>
           </div>
         </div>
 
-        {/* Scroll indicator - apenas visível no início */}
-        {scrollProgress < 0.15 && (
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 animate-bounce">
-            <div className="flex flex-col items-center">
-              <span className="text-sm mb-2">Role para descobrir mais</span>
-              <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
-                <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+        {/* Indicadores de interação baseado no estado */}
+        {sectionState === 'inside' && (
+          <>
+            {currentImageIndex === 0 && (
+              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 animate-bounce">
+                <div className="flex flex-col items-center">
+                  <span className="text-sm mb-2">Role para navegar</span>
+                  <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
+                    <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        )}
+            )}
 
-        {/* Indicador de fim da seção */}
-        {scrollProgress > 0.85 && (
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80">
-            <div className="flex flex-col items-center">
-              <span className="text-sm">Continue para saber mais</span>
-              <div className="mt-2 animate-pulse">↓</div>
+            {currentImageIndex === storyData.length - 1 && (
+              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80">
+                <div className="flex flex-col items-center">
+                  <span className="text-sm">Role mais para continuar</span>
+                  <div className="mt-2 animate-pulse">↓</div>
+                </div>
+              </div>
+            )}
+
+            {/* Controles de teclado para acessibilidade */}
+            <div className="absolute top-8 right-8 text-white/60 text-xs">
+              <div>↑↓ ou PageUp/PageDown para navegar</div>
+              <div>Esc para sair</div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </section>
