@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 
 const Gallery = () => {
@@ -14,19 +13,14 @@ const Gallery = () => {
       title: 'Quem Somos'
     },
     {
-      src: '/lovable-uploads/01cf467b-86b3-4f50-a424-d4d5be029b05.png',
-      alt: 'Produtos - Parcerias',
-      title: 'Nossos Produtos'
-    },
-    {
-      src: '/lovable-uploads/1f421959-cd73-4d0a-80cd-f1ddd3594b25.png',
-      alt: 'Missão Infolinx',
-      title: 'Nossa Missão'
-    },
-    {
       src: '/lovable-uploads/9a55e500-e0ef-43dd-a959-5c2abd90b69b.png',
       alt: 'Nossos Serviços',
       title: 'Nossos Serviços'
+    },
+    {
+      src: '/lovable-uploads/01cf467b-86b3-4f50-a424-d4d5be029b05.png',
+      alt: 'Produtos - Parcerias',
+      title: 'Nossos Produtos'
     },
     {
       src: '/lovable-uploads/f113ac0a-917b-4aec-9302-6eb474e24609.png',
@@ -39,14 +33,24 @@ const Gallery = () => {
       title: 'Planos de Serviços'
     },
     {
+      src: '/lovable-uploads/1f421959-cd73-4d0a-80cd-f1ddd3594b25.png',
+      alt: 'Missão Infolinx',
+      title: 'Nossa Missão'
+    },
+    {
+      src: '/lovable-uploads/49303d38-7f64-4e77-9fe8-1da14d96720d.png',
+      alt: 'Valores Infolinx',
+      title: 'Nossos Valores'
+    },
+    {
+      src: '/lovable-uploads/170d646c-eac5-4771-9105-a371074acbda.png',
+      alt: 'Visão Infolinx',
+      title: 'Nossa Visão'
+    },
+    {
       src: '/lovable-uploads/5839bc74-5ac9-4b74-9a8e-d337ffe573d7.png',
       alt: 'A Infolinx',
       title: 'Sobre a Infolinx'
-    },
-    {
-      src: '/lovable-uploads/26d193ac-07c0-41d5-b179-8c4b9261ff25.png',
-      alt: 'Comunicado Infolinx',
-      title: 'Comunicados'
     },
     {
       src: '/lovable-uploads/c2fd2917-d90a-4d15-9e2a-dd5b2698a08d.png',
@@ -59,14 +63,9 @@ const Gallery = () => {
       title: 'Atendimento Ágil'
     },
     {
-      src: '/lovable-uploads/49303d38-7f64-4e77-9fe8-1da14d96720d.png',
-      alt: 'Valores Infolinx',
-      title: 'Nossos Valores'
-    },
-    {
-      src: '/lovable-uploads/170d646c-eac5-4771-9105-a371074acbda.png',
-      alt: 'Visão Infolinx',
-      title: 'Nossa Visão'
+      src: '/lovable-uploads/26d193ac-07c0-41d5-b179-8c4b9261ff25.png',
+      alt: 'Comunicado Infolinx',
+      title: 'Comunicados'
     }
   ];
 
