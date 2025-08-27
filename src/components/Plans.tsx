@@ -1,10 +1,8 @@
-
 import { Check, Monitor, Server, Tablet, Router, Printer, Shield, Camera, Cloud, ShoppingCart, Plus, Minus } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { useCart } from '@/hooks/useCart';
-import { useToast } from '@/hooks/use-toast';
 import CartDrawer from './CartDrawer';
 
 const Plans = () => {
@@ -31,7 +29,6 @@ const Plans = () => {
 
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
-  const { toast } = useToast();
   
   const { 
     cartItems, 
@@ -53,11 +50,6 @@ const Plans = () => {
   const handleAddToCart = (service: typeof services[0]) => {
     const quantity = getQuantity(service.id);
     addToCart({ id: service.id, name: service.name, price: service.price }, quantity);
-    
-    toast({
-      title: "Item adicionado ao carrinho",
-      description: `${service.name} (${quantity}x) foi adicionado ao carrinho.`,
-    });
   };
 
   const handleSendWhatsApp = () => {
