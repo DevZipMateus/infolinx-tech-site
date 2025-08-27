@@ -9,9 +9,14 @@ import {
   Network,
   Printer,
   Monitor,
-  Smartphone
+  Smartphone,
+  Plus,
+  Minus,
+  ShoppingCart
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 const Services = () => {
   const services = [
@@ -57,6 +62,37 @@ const Services = () => {
     }
   ];
 
+  const [selectedServices, setSelectedServices] = useState<{[key: number]: number}>({});
+
+  const updateQuantity = (index: number, change: number) => {
+    setSelectedServices(prev => {
+      const currentQuantity = prev[index] || 0;
+      const newQuantity = Math.max(0, currentQuantity + change);
+      
+      if (newQuantity === 0) {
+        const { [index]: removed, ...rest } = prev;
+        return rest;
+      }
+      
+      return {
+        ...prev,
+        [index]: newQuantity
+      };
+    });
+  };
+
+  const generateWhatsAppMessage = () => {
+    const selectedItems = Object.entries(selectedServices)
+      .filter(([_, quantity]) => quantity > 0)
+      .map(([index, quantity]) => `• ${services[parseInt(index)].title} (${quantity}x)`)
+      .join('\n');
+    
+    const message = `Olá! Gostaria de solicitar orçamento para os seguintes serviços da Infolinx:\n\n${selectedItems}`;
+    return encodeURIComponent(message);
+  };
+
+  const totalSelectedServices = Object.values(selectedServices).reduce((sum, quantity) => sum + quantity, 0);
+
   return (
     <section id="servicos" className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -75,6 +111,8 @@ const Services = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {services.map((service, index) => {
             const Icon = service.icon;
+            const quantity = selectedServices[index] || 0;
+            
             return (
               <Card 
                 key={index} 
@@ -88,14 +126,66 @@ const Services = () => {
                   <h3 className="text-lg font-semibold text-foreground mb-3 flex-shrink-0">
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed flex-grow">
+                  <p className="text-muted-foreground text-sm leading-relaxed flex-grow mb-4">
                     {service.description}
                   </p>
+                  
+                  {/* Quantity Controls */}
+                  <div className="flex items-center justify-center gap-3 mb-4">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => updateQuantity(index, -1)}
+                      disabled={quantity === 0}
+                      className="w-8 h-8 p-0"
+                    >
+                      <Minus className="w-4 h-4" />
+                    </Button>
+                    
+                    <span className="text-lg font-semibold min-w-[2rem] text-center">
+                      {quantity}
+                    </span>
+                    
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => updateQuantity(index, 1)}
+                      className="w-8 h-8 p-0"
+                    >
+                      <Plus className="w-4 h-4" />
+                    </Button>
+                  </div>
+                  
+                  {quantity > 0 && (
+                    <div className="text-sm text-primary font-medium">
+                      Selecionado: {quantity}x
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             );
           })}
         </div>
+
+        {/* Selected Services Summary & WhatsApp Button */}
+        {totalSelectedServices > 0 && (
+          <div className="fixed bottom-6 right-6 bg-primary text-primary-foreground rounded-lg p-4 shadow-lg animate-fade-in z-50">
+            <div className="flex items-center gap-3">
+              <ShoppingCart className="w-5 h-5" />
+              <span className="font-medium">
+                {totalSelectedServices} serviço{totalSelectedServices > 1 ? 's' : ''} selecionado{totalSelectedServices > 1 ? 's' : ''}
+              </span>
+              <a
+                href={`https://wa.me/5531982980064?text=${generateWhatsAppMessage()}`}
+                className="bg-primary-foreground text-primary font-medium px-4 py-2 rounded-md hover:bg-primary-foreground/90 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Solicitar Orçamento
+              </a>
+            </div>
+          </div>
+        )}
 
         {/* CTA Section */}
         <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: '0.8s' }}>
