@@ -1,6 +1,13 @@
+
 import { Card, CardContent } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { useState } from 'react';
 
 const Gallery = () => {
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const images = [
     {
       src: '/lovable-uploads/76f0d139-e660-492e-86fa-5cca9bb9a7e1.png',
@@ -69,6 +76,25 @@ const Gallery = () => {
     }
   ];
 
+  const openModal = (index: number) => {
+    setSelectedImageIndex(index);
+    setIsModalOpen(true);
+  };
+
+  const nextImage = () => {
+    setSelectedImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const previousImage = () => {
+    setSelectedImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') previousImage();
+    if (e.key === 'Escape') setIsModalOpen(false);
+  };
+
   return (
     <section id="galeria" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -88,8 +114,9 @@ const Gallery = () => {
           {images.map((image, index) => (
             <Card 
               key={index} 
-              className="overflow-hidden hover:shadow-lg transition-all duration-300 animate-fade-in"
+              className="overflow-hidden hover:shadow-lg transition-all duration-300 animate-fade-in cursor-pointer"
               style={{ animationDelay: `${index * 0.1}s` }}
+              onClick={() => openModal(index)}
             >
               <CardContent className="p-0">
                 <div className="relative group">
@@ -108,6 +135,57 @@ const Gallery = () => {
             </Card>
           ))}
         </div>
+
+        {/* Modal for expanded image */}
+        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <DialogContent 
+            className="max-w-5xl w-full h-[90vh] p-0 bg-black/95 border-none"
+            onKeyDown={handleKeyDown}
+          >
+            <div className="relative w-full h-full flex items-center justify-center">
+              {/* Close button */}
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="absolute top-4 right-4 z-10 text-white hover:text-gray-300 transition-colors p-2 rounded-full bg-black/50"
+              >
+                <X size={24} />
+              </button>
+
+              {/* Previous button */}
+              <button
+                onClick={previousImage}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white hover:text-gray-300 transition-colors p-2 rounded-full bg-black/50"
+              >
+                <ChevronLeft size={32} />
+              </button>
+
+              {/* Image */}
+              <div className="flex flex-col items-center justify-center w-full h-full p-8">
+                <img
+                  src={images[selectedImageIndex].src}
+                  alt={images[selectedImageIndex].alt}
+                  className="max-w-full max-h-[calc(100%-80px)] object-contain"
+                />
+                <h3 className="text-white text-xl font-semibold mt-4 text-center">
+                  {images[selectedImageIndex].title}
+                </h3>
+              </div>
+
+              {/* Next button */}
+              <button
+                onClick={nextImage}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white hover:text-gray-300 transition-colors p-2 rounded-full bg-black/50"
+              >
+                <ChevronRight size={32} />
+              </button>
+
+              {/* Image counter */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white bg-black/50 px-3 py-1 rounded-full text-sm">
+                {selectedImageIndex + 1} / {images.length}
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
 
         {/* CTA Section */}
         <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: '1.3s' }}>
