@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
@@ -121,7 +120,7 @@ const Gallery = () => {
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {images.map((image, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
                   <Card 
                     className="overflow-hidden hover:shadow-lg transition-all duration-300 animate-fade-in cursor-pointer"
                     onClick={() => openModal(index)}
@@ -131,7 +130,7 @@ const Gallery = () => {
                         <img
                           src={image.src}
                           alt={image.alt}
-                          className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                          className="w-full h-72 sm:h-64 md:h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                           <div className="p-4 text-white">
