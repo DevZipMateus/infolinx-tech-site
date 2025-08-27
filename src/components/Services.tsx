@@ -76,14 +76,6 @@ const Services = () => {
   return (
     <section id="services" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Nossos Serviços</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Oferecemos soluções completas em tecnologia para empresas de todos os tamanhos.
-            Selecione os serviços desejados e solicite seu orçamento.
-          </p>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {services.map((service, index) => {
             const IconComponent = service.icon;
