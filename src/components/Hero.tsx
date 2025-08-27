@@ -1,4 +1,3 @@
-
 import { ArrowRight, Play, CheckCircle, Users, Award, Headphones } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -11,8 +10,20 @@ const Hero = () => {
   };
 
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center bg-gradient-to-br from-primary via-primary-600 to-primary-700 overflow-hidden">
-      {/* Background Pattern */}
+    <section 
+      id="inicio" 
+      className="relative min-h-screen flex items-center overflow-hidden"
+      style={{
+        backgroundImage: 'url(/lovable-uploads/5320e2f5-bd0e-4128-8518-5ed10f953f29.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/40"></div>
+
+      {/* Background Pattern - keeping the floating elements for additional visual interest */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 border border-white/20 rounded-lg rotate-12 animate-float"></div>
         <div className="absolute top-40 right-20 w-24 h-24 border border-white/20 rounded-lg -rotate-12 animate-float" style={{ animationDelay: '1s' }}></div>
