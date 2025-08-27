@@ -1,4 +1,3 @@
-
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
@@ -11,9 +10,9 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <img 
-              src="/lovable-uploads/dd8a0701-ac38-461c-a2e2-e71a00f3ee46.png" 
+              src="/lovable-uploads/d92d3c24-3b57-4af8-9577-4fa6a5f495d2.png" 
               alt="Infolinx Logo" 
-              className="h-12 w-auto brightness-0 invert"
+              className="h-12 w-auto"
             />
             <p className="text-secondary-foreground/80 leading-relaxed">
               Aperfeiçoar com Tecnologia. Somos especialistas em suporte, manutenção 
