@@ -73,68 +73,7 @@ const Services = () => {
 
   const totalSelectedServices = Object.values(selectedServices).reduce((sum, quantity) => sum + quantity, 0);
 
-  return (
-    <section id="services" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Nossos Serviços</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Soluções completas em TI para impulsionar o crescimento do seu negócio
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            const quantity = selectedServices[index] || 0;
-            
-            return (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                  <p className="text-gray-600 mb-4">{service.description}</p>
-                  
-                  <div className="flex items-center justify-center gap-2 mb-4">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => updateQuantity(index, -1)}
-                      disabled={quantity === 0}
-                    >
-                      <Minus className="w-4 h-4" />
-                    </Button>
-                    <span className="w-8 text-center font-semibold">{quantity}</span>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => updateQuantity(index, 1)}
-                    >
-                      <Plus className="w-4 h-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-
-        {totalSelectedServices > 0 && (
-          <div className="text-center">
-            <Button
-              onClick={() => window.open(`https://wa.me/5531982980064?text=${generateWhatsAppMessage()}`, '_blank')}
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-3"
-            >
-              <ShoppingCart className="w-5 h-5 mr-2" />
-              Solicitar Orçamento ({totalSelectedServices} serviços)
-            </Button>
-          </div>
-        )}
-      </div>
-    </section>
-  );
+  return null;
 };
 
 export default Services;
