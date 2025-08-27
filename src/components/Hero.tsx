@@ -1,3 +1,4 @@
+
 import { ArrowRight, Play, CheckCircle, Users, Award, Headphones } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -16,8 +17,9 @@ const Hero = () => {
       style={{
         backgroundImage: 'url(/lovable-uploads/5320e2f5-bd0e-4128-8518-5ed10f953f29.png)',
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed'
       }}
     >
       {/* Dark overlay for better text readability */}
