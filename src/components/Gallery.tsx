@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
@@ -130,7 +131,7 @@ const Gallery = () => {
                         <img
                           src={image.src}
                           alt={image.alt}
-                          className="w-full h-80 sm:h-64 md:h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                          className="w-full h-80 sm:h-64 lg:h-52 object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                           <div className="p-4 text-white">
