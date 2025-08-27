@@ -47,6 +47,26 @@ const Gallery = () => {
       src: '/lovable-uploads/26d193ac-07c0-41d5-b179-8c4b9261ff25.png',
       alt: 'Comunicado Infolinx',
       title: 'Comunicados'
+    },
+    {
+      src: '/lovable-uploads/c2fd2917-d90a-4d15-9e2a-dd5b2698a08d.png',
+      alt: 'Suporte Online Infolinx',
+      title: 'Suporte Online'
+    },
+    {
+      src: '/lovable-uploads/0f93fc4f-b170-4b0c-bd85-0fd62edc4c2b.png',
+      alt: 'Atendimento Ágil e Inteligente',
+      title: 'Atendimento Ágil'
+    },
+    {
+      src: '/lovable-uploads/49303d38-7f64-4e77-9fe8-1da14d96720d.png',
+      alt: 'Valores Infolinx',
+      title: 'Nossos Valores'
+    },
+    {
+      src: '/lovable-uploads/170d646c-eac5-4771-9105-a371074acbda.png',
+      alt: 'Visão Infolinx',
+      title: 'Nossa Visão'
     }
   ];
 
@@ -91,7 +111,7 @@ const Gallery = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: '0.9s' }}>
+        <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: '1.3s' }}>
           <div className="bg-primary/10 rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-foreground mb-4">
               Quer saber mais sobre nossos serviços?
