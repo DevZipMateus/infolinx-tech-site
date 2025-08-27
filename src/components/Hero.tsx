@@ -32,7 +32,7 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Content */}
           <div className="text-white space-y-8 animate-fade-in">
             <div className="space-y-4">
@@ -96,8 +96,8 @@ const Hero = () => {
           </div>
 
           {/* Visual Element */}
-          <div className="relative animate-slide-in" style={{ animationDelay: '0.3s' }}>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+          <div className="relative animate-slide-in lg:mt-[-4rem]" style={{ animationDelay: '0.3s' }}>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 min-h-[32rem]">
               <div className="space-y-6">
                 <h3 className="text-2xl font-semibold text-white mb-6">
                   Nossos Diferenciais
