@@ -178,7 +178,11 @@ const Gallery = () => {
                 <img
                   src={images[selectedImageIndex].src}
                   alt={images[selectedImageIndex].alt}
-                  className="max-w-full max-h-[calc(100%-100px)] object-contain"
+                  className={`max-w-full object-contain ${
+                    selectedImageIndex === 12 || selectedImageIndex === 13 
+                      ? 'max-h-[calc(60vh-100px)]' 
+                      : 'max-h-[calc(100%-100px)]'
+                  }`}
                 />
                 <h3 className="text-white text-xl font-semibold mt-4 text-center">
                   {images[selectedImageIndex].title}
