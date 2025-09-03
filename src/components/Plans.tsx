@@ -58,7 +58,7 @@ const Plans = () => {
   };
 
   return (
-    <section id="planos" className="py-20 bg-muted/30">
+    <section id="planos" className="py-20">
       <div className="container mx-auto px-4">
         {/* Floating Cart Button */}
         {getTotalItems() > 0 && (
