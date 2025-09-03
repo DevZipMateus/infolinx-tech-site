@@ -4,76 +4,142 @@ import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { useCart } from '@/hooks/useCart';
 import CartDrawer from './CartDrawer';
-
 const Plans = () => {
-  const services = [
-    { id: 1, name: 'Desktop', price: 'R$ 55,00', icon: Monitor },
-    { id: 2, name: 'Notebook', price: 'R$ 65,00', icon: Monitor },
-    { id: 3, name: 'Tablet', price: 'R$ 35,00', icon: Tablet },
-    { id: 4, name: 'Servidores', price: 'R$ 355,00', icon: Server },
-    { id: 5, name: 'Roteadores', price: 'R$ 90,00', icon: Router },
-    { id: 6, name: 'Switch Gerenciável', price: 'R$ 120,00', icon: Router },
-    { id: 7, name: 'Switch Não Gerenciável', price: 'R$ 35,00', icon: Router },
-    { id: 8, name: 'Access Point', price: 'R$ 35,00', icon: Router },
-    { id: 9, name: 'DVR 8 canais (24h)', price: 'R$ 35,00', icon: Camera },
-    { id: 10, name: 'DVR 16 canais (24h)', price: 'R$ 55,00', icon: Camera },
-    { id: 11, name: 'Alarme (24h)', price: 'R$ 120,00', icon: Shield },
-    { id: 12, name: 'Impressoras', price: 'R$ 55,00', icon: Printer },
-    { id: 13, name: 'Nobreaks', price: 'R$ 45,00', icon: Shield },
-    { id: 14, name: 'Microsoft 365 Basic', price: 'R$ 8,50', icon: Cloud },
-    { id: 15, name: 'Microsoft 365 Standard', price: 'R$ 12,50', icon: Cloud },
-    { id: 16, name: 'Microsoft 365 Premium', price: 'R$ 19,50', icon: Cloud },
-    { id: 17, name: 'Microsoft 365 E1', price: 'R$ 12,50', icon: Cloud },
-    { id: 18, name: 'Microsoft 365 E5', price: 'R$ 22,50', icon: Cloud }
-  ];
-
+  const services = [{
+    id: 1,
+    name: 'Desktop',
+    price: 'R$ 55,00',
+    icon: Monitor
+  }, {
+    id: 2,
+    name: 'Notebook',
+    price: 'R$ 65,00',
+    icon: Monitor
+  }, {
+    id: 3,
+    name: 'Tablet',
+    price: 'R$ 35,00',
+    icon: Tablet
+  }, {
+    id: 4,
+    name: 'Servidores',
+    price: 'R$ 355,00',
+    icon: Server
+  }, {
+    id: 5,
+    name: 'Roteadores',
+    price: 'R$ 90,00',
+    icon: Router
+  }, {
+    id: 6,
+    name: 'Switch Gerenciável',
+    price: 'R$ 120,00',
+    icon: Router
+  }, {
+    id: 7,
+    name: 'Switch Não Gerenciável',
+    price: 'R$ 35,00',
+    icon: Router
+  }, {
+    id: 8,
+    name: 'Access Point',
+    price: 'R$ 35,00',
+    icon: Router
+  }, {
+    id: 9,
+    name: 'DVR 8 canais (24h)',
+    price: 'R$ 35,00',
+    icon: Camera
+  }, {
+    id: 10,
+    name: 'DVR 16 canais (24h)',
+    price: 'R$ 55,00',
+    icon: Camera
+  }, {
+    id: 11,
+    name: 'Alarme (24h)',
+    price: 'R$ 120,00',
+    icon: Shield
+  }, {
+    id: 12,
+    name: 'Impressoras',
+    price: 'R$ 55,00',
+    icon: Printer
+  }, {
+    id: 13,
+    name: 'Nobreaks',
+    price: 'R$ 45,00',
+    icon: Shield
+  }, {
+    id: 14,
+    name: 'Microsoft 365 Basic',
+    price: 'R$ 8,50',
+    icon: Cloud
+  }, {
+    id: 15,
+    name: 'Microsoft 365 Standard',
+    price: 'R$ 12,50',
+    icon: Cloud
+  }, {
+    id: 16,
+    name: 'Microsoft 365 Premium',
+    price: 'R$ 19,50',
+    icon: Cloud
+  }, {
+    id: 17,
+    name: 'Microsoft 365 E1',
+    price: 'R$ 12,50',
+    icon: Cloud
+  }, {
+    id: 18,
+    name: 'Microsoft 365 E5',
+    price: 'R$ 22,50',
+    icon: Cloud
+  }];
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
-  
-  const { 
-    cartItems, 
-    addToCart, 
-    updateQuantity, 
-    removeFromCart, 
-    clearCart, 
-    getTotalItems, 
-    generateWhatsAppMessage 
+  const [quantities, setQuantities] = useState<{
+    [key: number]: number;
+  }>({});
+  const {
+    cartItems,
+    addToCart,
+    updateQuantity,
+    removeFromCart,
+    clearCart,
+    getTotalItems,
+    generateWhatsAppMessage
   } = useCart();
-
   const getQuantity = (serviceId: number) => quantities[serviceId] || 1;
-
   const updateServiceQuantity = (serviceId: number, newQuantity: number) => {
     if (newQuantity < 1) return;
-    setQuantities(prev => ({ ...prev, [serviceId]: newQuantity }));
+    setQuantities(prev => ({
+      ...prev,
+      [serviceId]: newQuantity
+    }));
   };
-
   const handleAddToCart = (service: typeof services[0]) => {
     const quantity = getQuantity(service.id);
-    addToCart({ id: service.id, name: service.name, price: service.price }, quantity);
+    addToCart({
+      id: service.id,
+      name: service.name,
+      price: service.price
+    }, quantity);
   };
-
   const handleSendWhatsApp = () => {
     const message = generateWhatsAppMessage();
     window.open(`https://wa.me/5531982980064?text=${message}`, '_blank');
   };
-
-  return (
-    <section id="planos" className="py-20 bg-transparent">
+  return <section id="planos" className="py-20 bg-transparent">
       <div className="container mx-auto px-4">
         {/* Floating Cart Button */}
-        {getTotalItems() > 0 && (
-          <div className="fixed bottom-6 right-20 z-50">
-            <Button
-              onClick={() => setIsCartOpen(true)}
-              className="relative bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-14 h-14 shadow-lg"
-            >
+        {getTotalItems() > 0 && <div className="fixed bottom-6 right-20 z-50">
+            <Button onClick={() => setIsCartOpen(true)} className="relative bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-14 h-14 shadow-lg">
               <ShoppingCart className="w-6 h-6" />
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">
                 {getTotalItems()}
               </span>
             </Button>
-          </div>
-        )}
+          </div>}
 
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
@@ -94,15 +160,11 @@ const Plans = () => {
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {services.map((service, index) => {
-            const IconComponent = service.icon;
-            const currentQuantity = getQuantity(service.id);
-            
-            return (
-              <Card 
-                key={service.id} 
-                className="service-card hover:shadow-lg transition-all duration-300 animate-fade-in"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
+          const IconComponent = service.icon;
+          const currentQuantity = getQuantity(service.id);
+          return <Card key={service.id} className="service-card hover:shadow-lg transition-all duration-300 animate-fade-in" style={{
+            animationDelay: `${index * 0.05}s`
+          }}>
                 <CardHeader className="text-center pb-3">
                   <div className="mb-3">
                     <IconComponent className="w-8 h-8 text-primary mx-auto" />
@@ -122,13 +184,7 @@ const Plans = () => {
 
                   {/* Quantity Selector */}
                   <div className="flex items-center justify-center gap-2 py-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => updateServiceQuantity(service.id, currentQuantity - 1)}
-                      className="h-8 w-8 p-0"
-                      disabled={currentQuantity <= 1}
-                    >
+                    <Button variant="outline" size="sm" onClick={() => updateServiceQuantity(service.id, currentQuantity - 1)} className="h-8 w-8 p-0" disabled={currentQuantity <= 1}>
                       <Minus className="h-3 w-3" />
                     </Button>
                     
@@ -136,42 +192,30 @@ const Plans = () => {
                       {currentQuantity}
                     </span>
                     
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => updateServiceQuantity(service.id, currentQuantity + 1)}
-                      className="h-8 w-8 p-0"
-                    >
+                    <Button variant="outline" size="sm" onClick={() => updateServiceQuantity(service.id, currentQuantity + 1)} className="h-8 w-8 p-0">
                       <Plus className="h-3 w-3" />
                     </Button>
                   </div>
 
                   <div className="space-y-2">
-                    <Button
-                      onClick={() => handleAddToCart(service)}
-                      className="w-full"
-                    >
+                    <Button onClick={() => handleAddToCart(service)} className="w-full">
                       <ShoppingCart className="w-4 h-4 mr-2" />
                       Adicionar ao Carrinho
                     </Button>
                     
-                    <a
-                      href={`https://wa.me/5531982980064?text=Olá! Gostaria de contratar o serviço de ${service.name} da Infolinx.`}
-                      className="w-full inline-flex items-center justify-center bg-secondary text-secondary-foreground font-medium px-4 py-2 rounded-lg hover:bg-secondary/80 transition-all duration-300 text-sm"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href={`https://wa.me/5531982980064?text=Olá! Gostaria de contratar o serviço de ${service.name} da Infolinx.`} className="w-full inline-flex items-center justify-center bg-secondary text-secondary-foreground font-medium px-4 py-2 rounded-lg hover:bg-secondary/80 transition-all duration-300 text-sm" target="_blank" rel="noopener noreferrer">
                       Contratar Individual
                     </a>
                   </div>
                 </CardContent>
-              </Card>
-            );
-          })}
+              </Card>;
+        })}
         </div>
 
         {/* Additional Info */}
-        <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: '0.9s' }}>
+        <div className="text-center mt-12 animate-fade-in" style={{
+        animationDelay: '0.9s'
+      }}>
           <div className="bg-card border border-border rounded-xl p-6 max-w-4xl mx-auto">
             <h3 className="text-xl font-semibold text-foreground mb-4">
               Como funciona nossa prestação de serviços?
@@ -187,7 +231,9 @@ const Plans = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: '1.0s' }}>
+        <div className="text-center mt-12 animate-fade-in" style={{
+        animationDelay: '1.0s'
+      }}>
           <div className="bg-primary/10 rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-foreground mb-4">
               Precisa de um orçamento personalizado?
@@ -196,12 +242,7 @@ const Plans = () => {
               Entre em contato conosco para receber uma proposta customizada 
               para as necessidades específicas da sua empresa.
             </p>
-            <a 
-              href="https://wa.me/5531982980064?text=Olá! Gostaria de receber um orçamento personalizado dos serviços da Infolinx."
-              className="inline-flex items-center justify-center bg-primary text-primary-foreground font-semibold px-8 py-3 rounded-lg hover:bg-primary/90 focus:bg-primary/90 focus:ring-2 focus:ring-primary/20 transition-all duration-300"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://wa.me/5531982980064?text=Olá! Gostaria de receber um orçamento personalizado dos serviços da Infolinx." className="inline-flex items-center justify-center bg-primary text-primary-foreground font-semibold px-8 py-3 rounded-lg hover:bg-primary/90 focus:bg-primary/90 focus:ring-2 focus:ring-primary/20 transition-all duration-300" target="_blank" rel="noopener noreferrer">
               Solicitar Orçamento
             </a>
           </div>
@@ -209,17 +250,7 @@ const Plans = () => {
       </div>
 
       {/* Cart Drawer */}
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        cartItems={cartItems}
-        onUpdateQuantity={updateQuantity}
-        onRemoveItem={removeFromCart}
-        onClearCart={clearCart}
-        onSendWhatsApp={handleSendWhatsApp}
-      />
-    </section>
-  );
+      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} cartItems={cartItems} onUpdateQuantity={updateQuantity} onRemoveItem={removeFromCart} onClearCart={clearCart} onSendWhatsApp={handleSendWhatsApp} />
+    </section>;
 };
-
 export default Plans;
