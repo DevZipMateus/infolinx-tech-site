@@ -14,13 +14,6 @@ const Hero = () => {
     <section 
       id="inicio" 
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{
-        backgroundImage: 'url(/lovable-uploads/5320e2f5-bd0e-4128-8518-5ed10f953f29.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center center',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed'
-      }}
     >
       {/* Dark overlay for better text readability */}
       <div className="absolute inset-0 bg-black/40"></div>
