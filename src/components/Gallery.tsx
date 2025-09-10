@@ -59,21 +59,6 @@ const Gallery = () => {
       src: '/lovable-uploads/5839bc74-5ac9-4b74-9a8e-d337ffe573d7.png',
       alt: 'A Infolinx',
       title: 'Sobre a Infolinx'
-    },
-    {
-      src: '/lovable-uploads/c2fd2917-d90a-4d15-9e2a-dd5b2698a08d.png',
-      alt: 'Suporte Online Infolinx',
-      title: 'Suporte Online'
-    },
-    {
-      src: '/lovable-uploads/0f93fc4f-b170-4b0c-bd85-0fd62edc4c2b.png',
-      alt: 'Atendimento Ágil e Inteligente',
-      title: 'Atendimento Ágil'
-    },
-    {
-      src: '/lovable-uploads/26d193ac-07c0-41d5-b179-8c4b9261ff25.png',
-      alt: 'Comunicado Infolinx',
-      title: 'Comunicados'
     }
   ];
 
