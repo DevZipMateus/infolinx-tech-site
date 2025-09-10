@@ -1,10 +1,7 @@
-
 import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-
 const Contact = () => {
-  return (
-    <section id="contato" className="py-12 sm:py-16 lg:py-20 bg-background">
+  return <section id="contato" className="py-12 sm:py-16 lg:py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16 animate-fade-in">
@@ -31,10 +28,7 @@ const Contact = () => {
                       <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0 mt-1" />
                       <div>
                         <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Telefone</h4>
-                        <a 
-                          href="tel:+5531982980064"
-                          className="text-muted-foreground hover:text-primary transition-colors text-sm sm:text-base"
-                        >
+                        <a href="tel:+5531982980064" className="text-muted-foreground hover:text-primary transition-colors text-sm sm:text-base">
                           (31) 98298-0064
                         </a>
                       </div>
@@ -48,10 +42,7 @@ const Contact = () => {
                       <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0 mt-1" />
                       <div>
                         <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">E-mail</h4>
-                        <a 
-                          href="mailto:atendimento@infolinx.com.br"
-                          className="text-muted-foreground hover:text-primary transition-colors text-sm sm:text-base break-all"
-                        >
+                        <a href="mailto:atendimento@infolinx.com.br" className="text-muted-foreground hover:text-primary transition-colors text-sm sm:text-base break-all">
                           atendimento@infolinx.com.br
                         </a>
                       </div>
@@ -92,14 +83,12 @@ const Contact = () => {
           </div>
 
           {/* CTA Section */}
-          <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <div className="animate-fade-in" style={{
+          animationDelay: '0.3s'
+        }}>
             <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-6 sm:p-8 h-full flex flex-col justify-center">
               <div className="text-center space-y-4 sm:space-y-6">
-                <img 
-                  src="/lovable-uploads/d92d3c24-3b57-4af8-9577-4fa6a5f495d2.png" 
-                  alt="WhatsApp"
-                  className="w-12 h-12 sm:w-16 sm:h-16 mx-auto"
-                />
+                <img src="/lovable-uploads/d92d3c24-3b57-4af8-9577-4fa6a5f495d2.png" alt="WhatsApp" className="w-12 h-12 sm:w-16 sm:h-16 mx-auto" />
                 <h3 className="text-xl sm:text-2xl font-bold text-foreground">
                   Vamos Conversar?
                 </h3>
@@ -109,41 +98,25 @@ const Contact = () => {
                 </p>
                 
                 <div className="space-y-3 sm:space-y-4">
-                  <a 
-                    href="https://wa.me/5531982980064?text=Olá! Gostaria de conhecer mais sobre os serviços da Infolinx."
-                    className="inline-flex items-center justify-center w-full bg-green-500 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-green-600 focus:bg-green-600 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 group text-sm sm:text-base"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img 
-                      src="/lovable-uploads/d92d3c24-3b57-4af8-9577-4fa6a5f495d2.png" 
-                      alt="WhatsApp"
-                      className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:scale-110 transition-transform"
-                    />
+                  <a href="https://wa.me/5531982980064?text=Olá! Gostaria de conhecer mais sobre os serviços da Infolinx." className="inline-flex items-center justify-center w-full bg-green-500 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-green-600 focus:bg-green-600 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 group text-sm sm:text-base" target="_blank" rel="noopener noreferrer">
+                    <img src="/lovable-uploads/d92d3c24-3b57-4af8-9577-4fa6a5f495d2.png" alt="WhatsApp" className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:scale-110 transition-transform" />
                     Falar no WhatsApp
                   </a>
                   
-                  <a 
-                    href="mailto:atendimento@infolinx.com.br"
-                    className="inline-flex items-center justify-center w-full bg-primary text-primary-foreground font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-primary-600 focus:bg-primary-600 focus:ring-2 focus:ring-primary/20 transition-all duration-300 group text-sm sm:text-base"
-                  >
+                  <a href="mailto:atendimento@infolinx.com.br" className="inline-flex items-center justify-center w-full bg-primary text-primary-foreground font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-primary-600 focus:bg-primary-600 focus:ring-2 focus:ring-primary/20 transition-all duration-300 group text-sm sm:text-base">
                     <Mail className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:scale-110 transition-transform" />
                     Enviar E-mail
                   </a>
                 </div>
                 
                 <div className="pt-3 sm:pt-4 border-t border-border/50">
-                  <p className="text-xs sm:text-sm text-muted-foreground">
-                    <strong>CNPJ:</strong> 17.238.598/0001-54
-                  </p>
+                  
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
