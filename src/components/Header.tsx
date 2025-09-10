@@ -38,7 +38,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img src="/lovable-uploads/dd8a0701-ac38-461c-a2e2-e71a00f3ee46.png" alt="Infolinx Logo - Aperfeiçoar com Tecnologia" className="h-10 sm:h-12 md:h-16 w-auto" />
+            <img src="/lovable-uploads/dd8a0701-ac38-461c-a2e2-e71a00f3ee46.png" alt="Infolinx Logo - Aperfeiçoar com Tecnologia" className="h-20 sm:h-12 md:h-16 w-auto" />
           </div>
 
           {/* Desktop Navigation */}
@@ -50,13 +50,7 @@ const Header = () => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-3">
-            <a 
-              href="https://infolinx.tomticket.com" 
-              title="Acessar Help Desk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm xl:text-base px-4 xl:px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-md font-medium"
-            >
+            <a href="https://infolinx.tomticket.com" title="Acessar Help Desk" target="_blank" rel="noopener noreferrer" className="text-sm xl:text-base px-4 xl:px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-md font-medium">
               Sou Cliente
             </a>
             <Button onClick={() => scrollToSection('#contato')} className="bg-primary text-primary-foreground hover:bg-primary-600 focus:bg-primary-600 focus:ring-2 focus:ring-primary/20 text-sm xl:text-base px-4 xl:px-6">
@@ -76,13 +70,7 @@ const Header = () => {
               {navLinks.map(link => <button key={link.href} onClick={() => scrollToSection(link.href)} className="nav-link text-left py-3 text-base">
                   {link.label}
                 </button>)}
-              <a 
-                href="https://infolinx.tomticket.com" 
-                title="Acessar Help Desk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 w-full py-3 px-4 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-md font-medium text-center"
-              >
+              <a href="https://infolinx.tomticket.com" title="Acessar Help Desk" target="_blank" rel="noopener noreferrer" className="mt-2 w-full py-3 px-4 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-md font-medium text-center">
                 Sou Cliente
               </a>
               <Button onClick={() => scrollToSection('#contato')} className="mt-2 bg-primary text-primary-foreground hover:bg-primary-600 focus:bg-primary-600 w-full py-3">
