@@ -175,7 +175,9 @@ const Plans = () => {
                 <CardContent className="text-center space-y-4">
                   <div>
                     <span className="text-2xl font-bold text-primary">{service.price}</span>
-                    <span className="text-sm text-muted-foreground block">por mês</span>
+                    <span className="text-sm text-muted-foreground block">
+                      {service.name.includes('Microsoft 365') ? 'aditivo por usuário/mês' : 'por mês'}
+                    </span>
                   </div>
                   
                   <div className="flex items-center justify-center text-sm text-muted-foreground">
