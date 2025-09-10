@@ -17,11 +17,13 @@ const Partners = () => {
     },
     {
       name: 'Autodesk',
-      logo: '/lovable-uploads/68044089-2ae5-4b03-accb-692e532c17bc.png'
+      logo: '/lovable-uploads/68044089-2ae5-4b03-accb-692e532c17bc.png',
+      url: 'https://www.autodesk.com/br/products?mktvar002=5656927|SEM|22402362435|176248868543|kwd-12548870&utm_source=GGL&utm_medium=SEM&utm_campaign=GGL_DEC_Autodesk_AMER_BR_eComm_SEM_BR_New_EX_0000_5656927_&utm_id=5656927&utm_term=kwd-12548870&mkwid=sUan9O2ac|pcrid|743928744624|pkw|autodesk|pmt|e|pdv|c|slid||pgrid|176248868543|ptaid|kwd-12548870|pid|&utm_medium=cpc&utm_source=google&utm_campaign=GGL_ESTORE_AUTODESK_BZ_POR_BR_SEM_EXACT&utm_term=autodesk&utm_content=sUan9O2ac|pcrid|743928744624|pkw|autodesk|pmt|e|pdv|c|slid||pgrid|176248868543|ptaid|kwd-12548870|&gad_source=1&gad_campaignid=22402362435&gbraid=0AAAAADx7pE1CoCEpHd5PI1pPycQTusfTV&gclid=Cj0KCQjww4TGBhCKARIsAFLXndQ1Vz8jN3G2nxOdKgQyKG-khxKrL0soNZfj0BxMLqt-n5DicVTFApQaAisVEALw_wcB'
     },
     {
       name: 'Lenovo',
-      logo: '/lovable-uploads/8c789511-0e23-45d1-8add-733ffbb61f20.png'
+      logo: '/lovable-uploads/8c789511-0e23-45d1-8add-733ffbb61f20.png',
+      url: 'https://www.lenovo.com/br/pt/d/promocoes/?orgRef=https%253A%252F%252Fwww.google.com%252F&visibleDatas=11279%3AThinkPad&cid=br:sem|se|google|j-b2c-commercial-convers-google-search-intelccf|search|commercial&gad_source=1&gad_campaignid=10067044248&gbraid=0AAAAADtpWiAah8g8E8I9SQlXEHf2L2X43&gclid=Cj0KCQjww4TGBhCKARIsAFLXndR6oLLcHm9Fgg_UgPpPFAZnuNt96IzwCp6FsDcYugBByr5gC4gJO10aAtkgEALw_wcB'
     },
     {
       name: 'Microsoft',
