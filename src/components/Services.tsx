@@ -63,19 +63,19 @@ const Services = () => {
             const IconComponent = service.icon;
             
             return (
-              <Card key={index} className="card-service hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardContent className="p-4 sm:p-6 text-center space-y-4">
+              <Card key={index} className="card-service hover:shadow-lg transition-all duration-300 animate-fade-in h-full" style={{ animationDelay: `${index * 0.1}s` }}>
+                <CardContent className="p-4 sm:p-6 text-center h-full flex flex-col">
                   <div className="mb-4">
                     <IconComponent className="w-10 h-10 sm:w-12 sm:h-12 text-primary mx-auto" />
                   </div>
                   <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">{service.title}</h3>
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">{service.description}</p>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4 flex-grow">{service.description}</p>
                   
                   <Button
                     onClick={() => requestQuote(service.title)}
                     variant="default"
                     size="sm"
-                    className="w-full text-xs sm:text-sm"
+                    className="w-full text-xs sm:text-sm mt-auto"
                   >
                     Solicitar Orçamento
                   </Button>
