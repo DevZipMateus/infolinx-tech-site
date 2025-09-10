@@ -1,5 +1,5 @@
 
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -85,14 +85,6 @@ const Footer = () => {
                 >
                   atendimento@infolinx.com.br
                 </a>
-              </div>
-              
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-secondary-foreground/60 flex-shrink-0 mt-1" />
-                <div className="text-secondary-foreground/80 text-sm sm:text-base">
-                  <p>Rua Januário Pereira Bem, N°52</p>
-                  <p>Bairro Tropical</p>
-                </div>
               </div>
             </div>
           </div>

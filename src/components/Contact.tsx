@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
+import { Phone, Mail, Clock, MessageCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 const Contact = () => {
   return <section id="contato" className="py-12 sm:py-16 lg:py-20 bg-background">
@@ -50,20 +50,6 @@ const Contact = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="card-service">
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="flex items-start space-x-3 sm:space-x-4">
-                      <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0 mt-1" />
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Endereço</h4>
-                        <p className="text-muted-foreground text-sm sm:text-base">
-                          Rua Januário Pereira Bem, N°52<br />
-                          Bairro Tropical
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
 
                 <Card className="card-service">
                   <CardContent className="p-4 sm:p-6">
