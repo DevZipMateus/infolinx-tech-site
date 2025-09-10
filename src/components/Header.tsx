@@ -48,8 +48,17 @@ const Header = () => {
               </button>)}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+          {/* CTA Buttons */}
+          <div className="hidden lg:flex items-center space-x-3">
+            <a 
+              href="https://infolinx.tomticket.com" 
+              title="Acessar Help Desk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm xl:text-base px-4 xl:px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-md font-medium"
+            >
+              Sou Cliente
+            </a>
             <Button onClick={() => scrollToSection('#contato')} className="bg-primary text-primary-foreground hover:bg-primary-600 focus:bg-primary-600 focus:ring-2 focus:ring-primary/20 text-sm xl:text-base px-4 xl:px-6">
               Falar Conosco
             </Button>
@@ -67,7 +76,16 @@ const Header = () => {
               {navLinks.map(link => <button key={link.href} onClick={() => scrollToSection(link.href)} className="nav-link text-left py-3 text-base">
                   {link.label}
                 </button>)}
-              <Button onClick={() => scrollToSection('#contato')} className="mt-4 bg-primary text-primary-foreground hover:bg-primary-600 focus:bg-primary-600 w-full py-3">
+              <a 
+                href="https://infolinx.tomticket.com" 
+                title="Acessar Help Desk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 w-full py-3 px-4 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-md font-medium text-center"
+              >
+                Sou Cliente
+              </a>
+              <Button onClick={() => scrollToSection('#contato')} className="mt-2 bg-primary text-primary-foreground hover:bg-primary-600 focus:bg-primary-600 w-full py-3">
                 Falar Conosco
               </Button>
             </div>
