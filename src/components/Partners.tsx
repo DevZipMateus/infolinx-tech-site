@@ -12,7 +12,8 @@ const Partners = () => {
     },
     {
       name: 'CorelDRAW',
-      logo: '/lovable-uploads/fc7bc7ae-f0df-4b49-905a-2daeb4a9ab12.png'
+      logo: '/lovable-uploads/fc7bc7ae-f0df-4b49-905a-2daeb4a9ab12.png',
+      url: 'https://www.coreldraw.com/br/product/coreldraw/?x-vehicle=ppc_brkws&utm_medium=cpc&utm_source=google&utm_term=coreldraw&utm_content=&utm_id=11287101014&extensionid=&matchtype=e&device=c&devicemodel=&creative=766780006963&network=g&placement=&campaignid=11287101014&x-source=ppc&x-target=ppc&promo=ppc&campaign_name=CDGS-Search-Brand-Evergreen-BR-PT&gad_source=1&gad_campaignid=11287101014&gbraid=0AAAAADew63QuHlsYN8W8AHfLFhASJ3YxK&gclid=Cj0KCQjww4TGBhCKARIsAFLXndTbH8U3UwlT_elNK9Jo1Le7btrHrIqiEwZa1ABrlWkG_fmBpn1uxJEaAq4pEALw_wcB'
     },
     {
       name: 'Autodesk',
