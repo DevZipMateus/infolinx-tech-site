@@ -28,7 +28,8 @@ const Partners = () => {
     },
     {
       name: 'Adobe',
-      logo: '/lovable-uploads/ecb9bee8-7fe3-4c64-b202-b6327e60e84b.png'
+      logo: '/lovable-uploads/ecb9bee8-7fe3-4c64-b202-b6327e60e84b.png',
+      url: 'https://www.adobe.com/br/creativecloud/campaign/pricing.html?sdid=2NVQC2QJ&mv=search&mv2=paidsearch&ef_id=Cj0KCQjww4TGBhCKARIsAFLXndTjBWIAJxJ2VJSyvNzBhHvGjSKJfqpey4jbNB_SAjITu8c1S3q4RPMaAhlIEALw_wcB:G:s&s_kwcid=AL!3085!3!459896307784!e!!g!!adobe!188193342!10039593102&gad_source=1&gad_campaignid=188193342&gbraid=0AAAAADxybVowlcBNOU1nOjAy8MDkzVTeV&gclid=Cj0KCQjww4TGBhCKARIsAFLXndTjBWIAJxJ2VJSyvNzBhHvGjSKJfqpey4jbNB_SAjITu8c1S3q4RPMaAhlIEALw_wcB'
     },
     {
       name: 'Intelbras',
