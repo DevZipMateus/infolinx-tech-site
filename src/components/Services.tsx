@@ -1,8 +1,7 @@
 
-import { Laptop, Server, Headphones, Shield, Gamepad2, Truck, Network, Monitor, Plus, Minus, ShoppingCart } from 'lucide-react';
+import { Laptop, Server, Headphones, Shield, Gamepad2, Truck, Network, Monitor } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
 
 const Services = () => {
   const services = [{
@@ -39,39 +38,10 @@ const Services = () => {
     description: 'Projetos personalizados de controle de acesso para condomínios e empresas.'
   }];
 
-  const [selectedServices, setSelectedServices] = useState<{
-    [key: number]: number;
-  }>({});
-
-  const updateQuantity = (index: number, change: number) => {
-    setSelectedServices(prev => {
-      const currentQuantity = prev[index] || 0;
-      const newQuantity = Math.max(0, currentQuantity + change);
-      if (newQuantity === 0) {
-        const {
-          [index]: removed,
-          ...rest
-        } = prev;
-        return rest;
-      }
-      return {
-        ...prev,
-        [index]: newQuantity
-      };
-    });
+  const requestQuote = (serviceTitle: string) => {
+    const message = `Olá! Gostaria de solicitar orçamento para o serviço: ${serviceTitle}`;
+    window.open(`https://wa.me/5531982980064?text=${encodeURIComponent(message)}`, '_blank');
   };
-
-  const generateWhatsAppMessage = () => {
-    const selectedItems = Object.entries(selectedServices)
-      .filter(([_, quantity]) => quantity > 0)
-      .map(([index, quantity]) => `• ${services[parseInt(index)].title} (${quantity}x)`)
-      .join('\n');
-    
-    const message = `Olá! Gostaria de solicitar orçamento para os seguintes serviços da Infolinx:\n\n${selectedItems}`;
-    return encodeURIComponent(message);
-  };
-
-  const totalSelectedServices = Object.values(selectedServices).reduce((sum, quantity) => sum + quantity, 0);
 
   return (
     <section id="servicos" className="py-12 sm:py-16 lg:py-20 bg-transparent">
@@ -91,7 +61,6 @@ const Services = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto mb-12 sm:mb-16">
           {services.map((service, index) => {
             const IconComponent = service.icon;
-            const quantity = selectedServices[index] || 0;
             
             return (
               <Card key={index} className="card-service hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
@@ -102,71 +71,19 @@ const Services = () => {
                   <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">{service.title}</h3>
                   <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">{service.description}</p>
                   
-                  {/* Quantity Controls */}
-                  <div className="flex items-center justify-center gap-2 mb-4">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => updateQuantity(index, -1)}
-                      disabled={quantity === 0}
-                      className="h-8 w-8 p-0"
-                    >
-                      <Minus className="h-3 w-3" />
-                    </Button>
-                    
-                    <span className="min-w-[2rem] text-center font-medium bg-muted px-2 py-1 rounded text-sm">
-                      {quantity}
-                    </span>
-                    
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => updateQuantity(index, 1)}
-                      className="h-8 w-8 p-0"
-                    >
-                      <Plus className="h-3 w-3" />
-                    </Button>
-                  </div>
-
                   <Button
-                    onClick={() => updateQuantity(index, quantity > 0 ? 0 : 1)}
-                    variant={quantity > 0 ? "default" : "outline"}
+                    onClick={() => requestQuote(service.title)}
+                    variant="default"
                     size="sm"
                     className="w-full text-xs sm:text-sm"
                   >
-                    <ShoppingCart className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                    {quantity > 0 ? 'Selecionado' : 'Selecionar'}
+                    Solicitar Orçamento
                   </Button>
                 </CardContent>
               </Card>
             );
           })}
         </div>
-
-        {/* WhatsApp CTA */}
-        {totalSelectedServices > 0 && (
-          <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 animate-fade-in">
-            <Button
-              onClick={() => {
-                const message = generateWhatsAppMessage();
-                window.open(`https://wa.me/5531982980064?text=${message}`, '_blank');
-              }}
-              className="bg-green-500 hover:bg-green-600 text-white rounded-full p-3 sm:p-4 shadow-lg"
-              size="lg"
-            >
-              <img 
-                src="/lovable-uploads/d92d3c24-3b57-4af8-9577-4fa6a5f495d2.png" 
-                alt="WhatsApp"
-                className="w-5 h-5 sm:w-6 sm:h-6 mr-2"
-              />
-              <span className="hidden sm:inline">Solicitar Orçamento</span>
-              <span className="sm:hidden">Orçamento</span>
-              <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center">
-                {totalSelectedServices}
-              </div>
-            </Button>
-          </div>
-        )}
 
         {/* CTA Section */}
         <div className="text-center animate-fade-in" style={{ animationDelay: '0.8s' }}>
