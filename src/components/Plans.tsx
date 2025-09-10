@@ -129,8 +129,9 @@ const Plans = () => {
     const message = generateWhatsAppMessage();
     window.open(`https://wa.me/5531982980064?text=${message}`, '_blank');
   };
-  return <section id="planos" className="py-20 bg-transparent">
-      <div className="container mx-auto px-4">
+  return (
+    <section id="planos" className="py-12 sm:py-16 lg:py-20 bg-transparent">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Floating Cart Button */}
         {getTotalItems() > 0 && <div className="fixed bottom-6 right-20 z-50">
             <Button onClick={() => setIsCartOpen(true)} className="relative bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-14 h-14 shadow-lg">
@@ -142,23 +143,23 @@ const Plans = () => {
           </div>}
 
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
             Nossos Serviços
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             Oferecemos suporte, manutenção e gerenciamento para todos os seus equipamentos 
             e sistemas de tecnologia com preços transparentes.
           </p>
-          <div className="mt-6 p-4 bg-primary/10 rounded-lg inline-block">
-            <p className="text-primary font-medium">
+          <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-primary/10 rounded-lg inline-block">
+            <p className="text-primary font-medium text-sm sm:text-base">
               Quantitativo mínimo: 5 dispositivos | Contratos anuais
             </p>
           </div>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
           {services.map((service, index) => {
           const IconComponent = service.icon;
           const currentQuantity = getQuantity(service.id);
@@ -251,6 +252,7 @@ const Plans = () => {
 
       {/* Cart Drawer */}
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} cartItems={cartItems} onUpdateQuantity={updateQuantity} onRemoveItem={removeFromCart} onClearCart={clearCart} onSendWhatsApp={handleSendWhatsApp} />
-    </section>;
+    </section>
+  );
 };
 export default Plans;

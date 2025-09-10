@@ -37,18 +37,18 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Content */}
           <div className="text-white space-y-8 animate-fade-in">
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <div className="space-y-4 sm:space-y-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 <span className="block">Aperfeiçoar</span>
                 <span className="block text-white/90">com</span>
                 <span className="block bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
                   Tecnologia
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 max-w-2xl">
+              <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl">
                 Somos especialistas em suporte, manutenção e gerenciamento de ativos de tecnologia para empresas.
               </p>
-              <p className="text-lg text-white/80 max-w-2xl">
+              <p className="text-base sm:text-lg text-white/80 max-w-2xl">
                 Parceiros certificados das principais marcas do mercado: Microsoft, Lenovo, Intelbras, AutoDesk e muito mais.
               </p>
             </div>
@@ -72,27 +72,27 @@ const Hero = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-8 border-t border-white/20">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 pt-6 sm:pt-8 border-t border-white/20">
               <div className="text-center">
                 <div className="flex items-center justify-center mb-2">
-                  <Users className="w-6 h-6 text-white/90 mr-2" />
+                  <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white/90 mr-2" />
                 </div>
-                <div className="text-2xl font-bold text-white">B2B</div>
-                <div className="text-sm text-white/80">Foco Corporativo</div>
+                <div className="text-xl sm:text-2xl font-bold text-white">B2B</div>
+                <div className="text-xs sm:text-sm text-white/80">Foco Corporativo</div>
               </div>
               <div className="text-center">
                 <div className="flex items-center justify-center mb-2">
-                  <Award className="w-6 h-6 text-white/90 mr-2" />
+                  <Award className="w-5 h-5 sm:w-6 sm:h-6 text-white/90 mr-2" />
                 </div>
-                <div className="text-2xl font-bold text-white">Certificados</div>
-                <div className="text-sm text-white/80">Principais Marcas</div>
+                <div className="text-xl sm:text-2xl font-bold text-white">Certificados</div>
+                <div className="text-xs sm:text-sm text-white/80">Principais Marcas</div>
               </div>
-              <div className="text-center">
+              <div className="text-center sm:col-span-2 md:col-span-1">
                 <div className="flex items-center justify-center mb-2">
-                  <Headphones className="w-6 h-6 text-white/90 mr-2" />
+                  <Headphones className="w-5 h-5 sm:w-6 sm:h-6 text-white/90 mr-2" />
                 </div>
-                <div className="text-2xl font-bold text-white">24/7</div>
-                <div className="text-sm text-white/80">Suporte Disponível</div>
+                <div className="text-xl sm:text-2xl font-bold text-white">24/7</div>
+                <div className="text-xs sm:text-sm text-white/80">Suporte Disponível</div>
               </div>
             </div>
           </div>

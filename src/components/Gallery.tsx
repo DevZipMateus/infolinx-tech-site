@@ -97,14 +97,14 @@ const Gallery = () => {
   };
 
   return (
-    <section id="galeria" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section id="galeria" className="py-12 sm:py-16 lg:py-20 bg-muted/30">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
             Nossa Galeria
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             Conheça mais sobre a Infolinx através de nossa galeria visual com informações 
             sobre nossos serviços, produtos e história.
           </p>
@@ -131,7 +131,7 @@ const Gallery = () => {
                         <img
                           src={image.src}
                           alt={image.alt}
-                          className="w-full h-80 sm:h-64 lg:h-52 object-cover transition-transform duration-300 group-hover:scale-105"
+                          className="w-full h-64 sm:h-48 lg:h-52 object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                           <div className="p-4 text-white">
@@ -207,25 +207,25 @@ const Gallery = () => {
         </Dialog>
 
         {/* CTA Section */}
-        <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: '1.3s' }}>
-          <div className="bg-primary/10 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
+        <div className="text-center mt-12 sm:mt-16 animate-fade-in" style={{ animationDelay: '1.3s' }}>
+          <div className="bg-primary/10 rounded-2xl p-6 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
               Quer saber mais sobre nossos serviços?
             </h3>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-6 text-sm sm:text-base">
               Entre em contato conosco e descubra como podemos ajudar sua empresa 
               a alcançar a excelência tecnológica.
             </p>
             <a 
               href="https://wa.me/5531982980064?text=Olá! Gostaria de saber mais sobre os serviços da Infolinx."
-              className="inline-flex items-center justify-center bg-primary text-primary-foreground font-semibold px-8 py-3 rounded-lg hover:bg-primary-600 focus:bg-primary-600 focus:ring-2 focus:ring-primary/20 transition-all duration-300"
+              className="inline-flex items-center justify-center bg-primary text-primary-foreground font-semibold px-6 sm:px-8 py-3 rounded-lg hover:bg-primary-600 focus:bg-primary-600 focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-sm sm:text-base"
               target="_blank"
               rel="noopener noreferrer"
             >
               <img 
                 src="/lovable-uploads/d92d3c24-3b57-4af8-9577-4fa6a5f495d2.png" 
                 alt="WhatsApp"
-                className="w-5 h-5 mr-2"
+                className="w-4 h-4 sm:w-5 sm:h-5 mr-2"
               />
               Falar Conosco
             </a>
