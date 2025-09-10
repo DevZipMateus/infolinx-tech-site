@@ -71,11 +71,11 @@ const Partners = () => {
             <CarouselContent className="-ml-2 md:-ml-4">
               {partners.map((partner, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
-                  <div className="flex items-center justify-center p-6 h-32">
+                  <div className="flex items-center justify-center p-6 h-40">
                     <img
                       src={partner.logo}
                       alt={`Logo ${partner.name}`}
-                      className="max-h-24 max-w-full object-contain transition-all duration-300"
+                      className="max-h-36 max-w-full object-contain transition-all duration-300"
                     />
                   </div>
                 </CarouselItem>
