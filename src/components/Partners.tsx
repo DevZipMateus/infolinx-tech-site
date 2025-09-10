@@ -23,7 +23,8 @@ const Partners = () => {
     },
     {
       name: 'Microsoft',
-      logo: '/lovable-uploads/31c12c38-94bf-4372-acce-9e053fd731e9.png'
+      logo: '/lovable-uploads/31c12c38-94bf-4372-acce-9e053fd731e9.png',
+      url: 'https://www.microsoft.com/pt-br'
     },
     {
       name: 'Adobe',
@@ -73,11 +74,26 @@ const Partners = () => {
               {partners.map((partner, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/3">
                   <div className="flex items-center justify-center p-8 h-80">
-                    <img
-                      src={partner.logo}
-                      alt={`Logo ${partner.name}`}
-                      className="max-h-64 max-w-full object-contain transition-all duration-300"
-                    />
+                    {partner.url ? (
+                      <a 
+                        href={partner.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="cursor-pointer hover:scale-105 transition-transform duration-300"
+                      >
+                        <img
+                          src={partner.logo}
+                          alt={`Logo ${partner.name}`}
+                          className="max-h-64 max-w-full object-contain"
+                        />
+                      </a>
+                    ) : (
+                      <img
+                        src={partner.logo}
+                        alt={`Logo ${partner.name}`}
+                        className="max-h-64 max-w-full object-contain"
+                      />
+                    )}
                   </div>
                 </CarouselItem>
               ))}
