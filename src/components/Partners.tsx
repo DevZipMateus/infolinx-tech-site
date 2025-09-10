@@ -7,7 +7,8 @@ const Partners = () => {
   const partners = [
     {
       name: 'Kaspersky',
-      logo: '/lovable-uploads/6771fecd-d0ae-4f1b-ab62-68a9296eacbe.png'
+      logo: '/lovable-uploads/6771fecd-d0ae-4f1b-ab62-68a9296eacbe.png',
+      url: 'https://www.kaspersky.com.br/lp/special-offer?reseller=br_b2c-eg-lf_acq_ona_sem_bra_onl_b2c_google_ppc-ad_______&utm_content=ppc-ad|generic&utm_source=google&utm_medium=cpc&utm_campaign=DM_B2C_LATAM_BR_PPC_Google_LF_PT-BR_B_KWD_EXA_Brand_Pure&gad_source=1&gad_campaignid=21904674676&gbraid=0AAAAA-fVjSHtUhy3wQU8nt334Lfk_rJVQ&gclid=Cj0KCQjww4TGBhCKARIsAFLXndQ381n11kpC0YxbboMO9Gc7-e6kc_jNM68NqKumzBtGxhyr_RzZUjsaAuXUEALw_wcB'
     },
     {
       name: 'CorelDRAW',
