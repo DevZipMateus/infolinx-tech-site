@@ -42,7 +42,7 @@ const Partners = () => {
       api.scrollNext();
     };
 
-    const interval = setInterval(autoplay, 3000); // 3 segundos por slide
+    const interval = setInterval(autoplay, 2000); // 2 segundos para transição mais rápida
 
     return () => clearInterval(interval);
   }, [api]);
@@ -64,6 +64,7 @@ const Partners = () => {
             opts={{
               align: "start",
               loop: true,
+              duration: 20,
             }}
             setApi={setApi}
             className="w-full"
