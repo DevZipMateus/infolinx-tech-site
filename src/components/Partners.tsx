@@ -33,7 +33,8 @@ const Partners = () => {
     },
     {
       name: 'Intelbras',
-      logo: '/lovable-uploads/becfd665-febf-44df-9cb3-33923b08b1dc.png'
+      logo: '/lovable-uploads/becfd665-febf-44df-9cb3-33923b08b1dc.png',
+      url: 'https://loja.intelbras.com.br/?gad_source=1&gad_campaignid=10905497741&gbraid=0AAAAACdR-oqw408GiR9NJrFk0knI7p-sJ&gclid=Cj0KCQjww4TGBhCKARIsAFLXndTMcRuICtovAuw7hcjDDN-jEPw-EqmLlLtAfzI3kb80sUEKYckfTpEaAqnrEALw_wcB'
     }
   ];
 
