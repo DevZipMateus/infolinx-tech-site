@@ -30,6 +30,10 @@ const Partners = () => {
     name: 'Intelbras',
     logo: '/lovable-uploads/becfd665-febf-44df-9cb3-33923b08b1dc.png',
     url: 'https://loja.intelbras.com.br/?gad_source=1&gad_campaignid=10905497741&gbraid=0AAAAACdR-oqw408GiR9NJrFk0knI7p-sJ&gclid=Cj0KCQjww4TGBhCKARIsAFLXndTMcRuICtovAuw7hcjDDN-jEPw-EqmLlLtAfzI3kb80sUEKYckfTpEaAqnrEALw_wcB'
+  }, {
+    name: 'ThinkPad',
+    logo: '/lovable-uploads/thinkpad-logo.png',
+    url: 'https://www.lenovo.com/br/pt/d/promocoes/?orgRef=https%253A%252F%252Fwww.google.com%252F&visibleDatas=11279%3AThinkPad&cid=br:sem|se|google|j-b2c-commercial-convers-google-search-intelccf|search|commercial&gad_source=1&gad_campaignid=10067044248&gbraid=0AAAAADtpWiA_lwVEM3lF5jKuwcCFmQJ5J&gclid=Cj0KCQjwuKnGBhD5ARIsAD19RsaGiy9wnsRIgPm42WohkhEMTs2zPp1HtRISRcskR0S2jhngtRzfw_caAid5EALw_wcB'
   }];
   useEffect(() => {
     if (!api) return;
