@@ -152,8 +152,13 @@ const Plans = () => {
             e sistemas de tecnologia com preços transparentes.
           </p>
           <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-primary/10 rounded-lg inline-block">
-            <p className="text-primary font-medium text-sm sm:text-base">
-              Quantitativo mínimo: 5 dispositivos | Contratos anuais
+            <p className="text-primary font-medium text-sm sm:text-base mb-2">
+              <strong>Plano BASIC:</strong> Quantitativo mínimo: 5 dispositivos | Contratos anuais
+            </p>
+            <p className="text-primary/80 text-xs sm:text-sm">
+              Também possuímos planos <strong>Standard</strong> e <strong>Premium</strong> com condições diferenciadas.
+              <br />
+              <span className="underline">Entre em contato para saber mais sobre os outros planos.</span>
             </p>
           </div>
         </div>
