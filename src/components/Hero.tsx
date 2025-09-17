@@ -48,9 +48,6 @@ const Hero = () => {
               <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl">
                 Somos especialistas em suporte, manutenção e gerenciamento de ativos de tecnologia para empresas.
               </p>
-              <p className="text-base sm:text-lg text-white/80 max-w-2xl">
-                Parceiros certificados das principais marcas do mercado: Microsoft, Lenovo, Intelbras, AutoDesk e muito mais.
-              </p>
             </div>
 
             {/* CTA Buttons */}
@@ -84,8 +81,8 @@ const Hero = () => {
                 <div className="flex items-center justify-center mb-2">
                   <Award className="w-5 h-5 sm:w-6 sm:h-6 text-white/90 mr-2" />
                 </div>
-                <div className="text-xl sm:text-2xl font-bold text-white">Certificados</div>
-                <div className="text-xs sm:text-sm text-white/80">Principais Marcas</div>
+                <div className="text-xl sm:text-2xl font-bold text-white">Qualidade</div>
+                <div className="text-xs sm:text-sm text-white/80">Excelência</div>
               </div>
               <div className="text-center sm:col-span-2 md:col-span-1">
                 <div className="flex items-center justify-center mb-2">
@@ -114,13 +111,6 @@ const Hero = () => {
                     </div>
                   </div>
                   
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle className="w-6 h-6 text-white mt-1 flex-shrink-0" />
-                    <div className="text-white/90">
-                      <div className="font-medium">Parceiros Certificados</div>
-                      <div className="text-sm text-white/70">Microsoft, Lenovo, Intelbras, AutoDesk</div>
-                    </div>
-                  </div>
                   
                   <div className="flex items-start space-x-3">
                     <CheckCircle className="w-6 h-6 text-white mt-1 flex-shrink-0" />
