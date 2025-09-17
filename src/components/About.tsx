@@ -84,6 +84,45 @@ const About = () => {
           </div>
         </div>
 
+        {/* Lenovo Specialization Section */}
+        <div className="mt-16 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+          <Card className="card-service bg-gradient-to-br from-primary/5 to-secondary/5 border-primary/20">
+            <CardContent className="p-6 sm:p-8">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
+                  Especialização Lenovo
+                </h3>
+                <div className="flex items-center justify-center space-x-6 sm:space-x-8 mb-6">
+                  <div className="text-center">
+                    <Shield className="w-8 h-8 sm:w-10 sm:h-10 text-primary mx-auto mb-2" />
+                    <span className="text-sm font-semibold text-foreground">ThinkPad</span>
+                  </div>
+                  <div className="text-center">
+                    <Cpu className="w-8 h-8 sm:w-10 sm:h-10 text-primary mx-auto mb-2" />
+                    <span className="text-sm font-semibold text-foreground">ThinkStation</span>
+                  </div>
+                  <div className="text-center">
+                    <Award className="w-8 h-8 sm:w-10 sm:h-10 text-primary mx-auto mb-2" />
+                    <span className="text-sm font-semibold text-foreground">ThinkSystem</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="text-center max-w-4xl mx-auto">
+                <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-4">
+                  Nosso trabalho é realmente diferencial com este fabricante. Temos a condição de 
+                  <span className="font-semibold text-foreground"> vender, integrar e fazer manutenção</span> de 
+                  todos os itens relacionados.
+                </p>
+                <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+                  Somos capacitados para <span className="font-semibold text-foreground">dimensionar e identificar</span> o 
+                  equipamento que atende perfeitamente a demanda do cliente.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
       </div>
     </section>
   );
