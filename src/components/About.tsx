@@ -84,30 +84,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Partners Section */}
-        <div className="text-center animate-fade-in" style={{ animationDelay: '0.5s' }}>
-          <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-6 sm:mb-8">
-            Parceiros Certificados
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 items-center max-w-4xl mx-auto">
-            <div className="flex flex-col items-center space-y-2 p-3 sm:p-4 bg-card rounded-lg border border-border hover:shadow-md transition-shadow">
-              <Award className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
-              <span className="font-medium text-foreground text-sm sm:text-base">Microsoft</span>
-            </div>
-            <div className="flex flex-col items-center space-y-2 p-3 sm:p-4 bg-card rounded-lg border border-border hover:shadow-md transition-shadow">
-              <Award className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
-              <span className="font-medium text-foreground text-sm sm:text-base">Lenovo</span>
-            </div>
-            <div className="flex flex-col items-center space-y-2 p-3 sm:p-4 bg-card rounded-lg border border-border hover:shadow-md transition-shadow">
-              <Award className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
-              <span className="font-medium text-foreground text-sm sm:text-base">Intelbras</span>
-            </div>
-            <div className="flex flex-col items-center space-y-2 p-3 sm:p-4 bg-card rounded-lg border border-border hover:shadow-md transition-shadow">
-              <Award className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
-              <span className="font-medium text-foreground text-sm sm:text-base">AutoDesk</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
