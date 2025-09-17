@@ -38,6 +38,10 @@ const Partners = () => {
     name: 'ThinkStation',
     logo: '/lovable-uploads/thinkstation-logo.svg',
     url: 'https://www.lenovo.com/br/pt/c/workstations/thinkstation/thinkstation-p/?orgRef=https%253A%252F%252Fwww.google.com%252F&srsltid=AfmBOopSxXWjlz0rRuwU7tS1hUFprIH5iqep-mq7vGEdc_XbCWHH9Isw'
+  }, {
+    name: 'ThinkSystem',
+    logo: '/lovable-uploads/thinksystem-logo.png',
+    url: 'https://lenovo.com/br/pt/d/promocoes/servidores/?&cid=br:sem|se|google|b2c-isg-convers-google-search-intelccf|search|isg&gad_source=1&gad_campaignid=22788905940&gbraid=0AAAAADtpWiDkGN1KOuP8-J1SXRZFvhHTe&gclid=Cj0KCQjwuKnGBhD5ARIsAD19RsYu3O1QqlJ4DMiYUbtkbMGaKVWpW04_Ld_dMVP6_yJCQUZ5QN7ZptkaArfdEALw_wcB'
   }];
   useEffect(() => {
     if (!api) return;
