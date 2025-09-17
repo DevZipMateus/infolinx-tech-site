@@ -38,7 +38,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img src="/lovable-uploads/dd8a0701-ac38-461c-a2e2-e71a00f3ee46.png" alt="Infolinx Logo - Aperfeiçoar com Tecnologia" className="h-20 sm:h-12 md:h-16 w-auto" />
+            <img src="/lovable-uploads/dd8a0701-ac38-461c-a2e2-e71a00f3ee46.png" alt="Infolinx Logo - Aperfeiçoar com Tecnologia" className="h-24 sm:h-16 md:h-20 lg:h-24 w-auto" />
           </div>
 
           {/* Desktop Navigation */}
