@@ -185,6 +185,15 @@ const Plans = () => {
                     <span>Suporte completo incluído</span>
                   </div>
 
+                  {/* Microsoft Disclaimer */}
+                  {service.name.includes('Microsoft 365') && (
+                    <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mt-3">
+                      <p className="text-xs text-amber-800 leading-relaxed">
+                        <strong>Aviso:</strong> Este item não é a venda da licença Microsoft, é o serviço de apoio, gestão e evolução para os clientes que já tem a licenças.
+                      </p>
+                    </div>
+                  )}
+
                   {/* Quantity Selector */}
                   <div className="flex items-center justify-center gap-2 py-2">
                     <Button variant="outline" size="sm" onClick={() => updateServiceQuantity(service.id, currentQuantity - 1)} className="h-8 w-8 p-0" disabled={currentQuantity <= 1}>
