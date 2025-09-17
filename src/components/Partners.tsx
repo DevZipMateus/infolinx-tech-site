@@ -34,6 +34,10 @@ const Partners = () => {
     name: 'ThinkPad',
     logo: '/lovable-uploads/thinkpad-logo.png',
     url: 'https://www.lenovo.com/br/pt/d/promocoes/?orgRef=https%253A%252F%252Fwww.google.com%252F&visibleDatas=11279%3AThinkPad&cid=br:sem|se|google|j-b2c-commercial-convers-google-search-intelccf|search|commercial&gad_source=1&gad_campaignid=10067044248&gbraid=0AAAAADtpWiA_lwVEM3lF5jKuwcCFmQJ5J&gclid=Cj0KCQjwuKnGBhD5ARIsAD19RsaGiy9wnsRIgPm42WohkhEMTs2zPp1HtRISRcskR0S2jhngtRzfw_caAid5EALw_wcB'
+  }, {
+    name: 'ThinkStation',
+    logo: '/lovable-uploads/thinkstation-logo.svg',
+    url: 'https://www.lenovo.com/br/pt/c/workstations/thinkstation/thinkstation-p/?orgRef=https%253A%252F%252Fwww.google.com%252F&srsltid=AfmBOopSxXWjlz0rRuwU7tS1hUFprIH5iqep-mq7vGEdc_XbCWHH9Isw'
   }];
   useEffect(() => {
     if (!api) return;
