@@ -194,6 +194,15 @@ const Plans = () => {
                     </div>
                   )}
 
+                  {/* Nobreaks Additional Info */}
+                  {service.name === 'Nobreaks' && (
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-3 mt-3">
+                      <p className="text-xs text-green-800 leading-relaxed">
+                        <strong>Incluso:</strong> Equipamento reserva incluído
+                      </p>
+                    </div>
+                  )}
+
                   {/* Quantity Selector */}
                   <div className="flex items-center justify-center gap-2 py-2">
                     <Button variant="outline" size="sm" onClick={() => updateServiceQuantity(service.id, currentQuantity - 1)} className="h-8 w-8 p-0" disabled={currentQuantity <= 1}>
